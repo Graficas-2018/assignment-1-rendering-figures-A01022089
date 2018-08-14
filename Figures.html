@@ -16,7 +16,7 @@
 	$(document).ready(
 			function() {
                 var canvas = document.getElementById("webglcanvas");
-                
+
                 var gl = initWebGL(canvas);
                 initGL(gl, canvas);
 		        initViewport(gl, canvas);
@@ -26,9 +26,21 @@
                 var triangle = createTriangle(gl);
                 var sphere = createSphere(gl, 0.5);
                 var rhombus = createRhombus(gl);
-                
+
                 // TO DO: Transform the different figure's positions, and draw them.
-                
+								mat4.identity(modelViewMatrix);
+								mat4.translate(modelViewMatrix, modelViewMatrix, [-1.5, 1.0, -5.0]);
+								draw(gl, square);
+
+								mat4.translate(modelViewMatrix, modelViewMatrix, [2.5, 0.0, 0.0]);
+								draw(gl, triangle);
+
+								mat4.translate(modelViewMatrix, modelViewMatrix, [-2.5, -2.0, 0.0]);
+								draw(gl, rhombus);
+
+								mat4.translate(modelViewMatrix, modelViewMatrix, [2.5, 0.0, 0.0]);
+								draw(gl, sphere);
+
 			}
 	);
 </script>
@@ -41,4 +53,3 @@
 </body>
 
 </html>
-
